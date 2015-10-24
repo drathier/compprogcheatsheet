@@ -2,23 +2,23 @@
 Cheat sheet for competitive programming
 
 
-# done
+# Done
 - binary search (tst)
 - floyd-warshall (uva)
 
-# needs testing
+# Needs testing
 - fenwick tree
 - bellman-ford
 - dijkstra
 - prime sieve
 
-# improvable
+# Improvable
 - union find
     - missing union by rank optimization, could be faster
 - gcd/lcm/eucl/diophantic
     - hard to read; would inlining some code (and making a non-recursive version) help?
 
-# todo
+# Todo
 - trie
 - suffix array/tree (aho-corasick)
     - suffix array is probably easier to write, and usually faster because of smaller memory footprint
