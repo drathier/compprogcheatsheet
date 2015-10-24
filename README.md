@@ -36,3 +36,5 @@ Cheat sheet for competitive programming
     - tarjan or kahn
 - matrix exponentiation
 - howto solve anything; step by step
+- geometry, maths and statistics
+    - useful formulas and when to use what
