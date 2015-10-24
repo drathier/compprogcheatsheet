@@ -1,0 +1,1 @@
+does not include rank -> probably O(log(n)). Tofix: empty tree has rank 0. join(a, b) where a.rank==b.rank -> a.rank++, b.parent = a;
