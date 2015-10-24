@@ -62,10 +62,10 @@ def recursive_collect(collection, directory):
 
 header = r"""\title{A Competitive Programming Cheat Sheet}
 
-\documentclass{article}
+\documentclass[landscape]{article}
 
 \usepackage{listings}
-
+\usepackage[landscape]{geometry}
 \usepackage[usenames,dvipsnames]{color}
 
 \definecolor{DarkGreen}{rgb}{0.0,0.4,0.0} % Comment color
@@ -92,9 +92,10 @@ if __name__ == '__main__':
     sections = ""
     for entry in entries:
         if entry.section != last_section:
+            sections += r"\clearpage" + "\n"
             sections += r"\section{" + entry.section + "}\n\n"
         if is_code(entry):
-            sections += r'\paragraph{' + entry.filename + '}\n'
+            sections += r'\subsection{' + entry.filename + '}\n'
             sections += r'\lstinputlisting{"' + entry.path + '"}\n\n'
         
         last_section = entry.section
