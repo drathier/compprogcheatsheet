@@ -5,11 +5,11 @@ Cheat sheet for competitive programming
 # Done
 - binary search (tst)
 - floyd-warshall (uva)
+- bellman-ford (Kattis)
+- dijkstra (Kattis)
 
 # Needs testing
 - fenwick tree
-- bellman-ford
-- dijkstra
 - prime sieve
 
 # Improvable
