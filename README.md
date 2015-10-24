@@ -1,4 +1,4 @@
-# compprogcheatsheet
+# CompProgCheatSheet
 Cheat sheet for competitive programming
 
 
