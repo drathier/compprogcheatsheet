@@ -17,6 +17,8 @@ Cheat sheet for competitive programming
     - missing union by rank optimization, could be faster
 - gcd/lcm/eucl/diophantic
     - hard to read; would inlining some code (and making a non-recursive version) help?
+- A-star
+    - need to standardize format when including other algorithms
 
 # Todo
 - trie
@@ -39,3 +41,5 @@ Cheat sheet for competitive programming
 - geometry, maths and statistics
     - useful formulas and when to use what
 - markov chain / MDP
+- Ordo-notation for all algorithms, and their limits etc.
+    - probably best if kept in a table, one per area (graph, string etc.)
