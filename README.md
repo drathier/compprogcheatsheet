@@ -34,3 +34,5 @@ Cheat sheet for competitive programming
     - tarjan or path-based strong component algorithm
 - topological sort
     - tarjan or kahn
+- matrix exponentiation
+- howto solve anything; step by step
