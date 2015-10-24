@@ -38,3 +38,4 @@ Cheat sheet for competitive programming
 - howto solve anything; step by step
 - geometry, maths and statistics
     - useful formulas and when to use what
+- markov chain / MDP
