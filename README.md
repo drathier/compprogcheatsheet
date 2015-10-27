@@ -8,14 +8,13 @@ Cheat sheet for competitive programming
 - bellman-ford (Kattis)
 - dijkstra (Kattis)
 - topological sort, kahn's algorithm (uva)
+- minimum spanning tree, kruskals algorithm (kattis)
 
 # Needs testing
 - fenwick tree
 - prime sieve
 
 # Improvable
-- union find
-    - missing union by rank optimization, could be faster
 - gcd/lcm/eucl/diophantic
     - hard to read; would inlining some code (and making a non-recursive version) help?
 - A-star
@@ -29,7 +28,7 @@ Cheat sheet for competitive programming
 - convex hull
     - jarvis walk or graham scan
         - add note about 2x speedup by running top and bottom separately
-- minimum spanning tree
+
 - maxflow
     - just assume DFS is already done
 - strongly connected components
