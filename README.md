@@ -7,6 +7,7 @@ Cheat sheet for competitive programming
 - floyd-warshall (uva)
 - bellman-ford (Kattis)
 - dijkstra (Kattis)
+- topological sort, kahn's algorithm (uva)
 
 # Needs testing
 - fenwick tree
@@ -28,14 +29,11 @@ Cheat sheet for competitive programming
 - convex hull
     - jarvis walk or graham scan
         - add note about 2x speedup by running top and bottom separately
-
 - minimum spanning tree
 - maxflow
     - just assume DFS is already done
 - strongly connected components
     - tarjan or path-based strong component algorithm
-- topological sort
-    - tarjan or kahn
 - matrix exponentiation
 - howto solve anything; step by step
 - geometry, maths and statistics
