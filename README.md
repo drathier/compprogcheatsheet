@@ -12,6 +12,7 @@ Cheat sheet for competitive programming
 
 # Needs testing
 - fenwick tree
+    - including 2d version
 - prime sieve
 
 # Improvable
