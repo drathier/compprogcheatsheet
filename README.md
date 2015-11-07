@@ -9,6 +9,7 @@ Cheat sheet for competitive programming
 - dijkstra (Kattis)
 - topological sort, kahn's algorithm (uva)
 - minimum spanning tree, kruskals algorithm (kattis)
+- segmenttree 2D (uva)
 
 # Needs testing
 - fenwick tree
