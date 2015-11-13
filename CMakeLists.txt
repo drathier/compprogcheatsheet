@@ -5,6 +5,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
 
 set(SOURCE_FILES
-        code/math/matrix-exp.cpp)
+        code/math/matrix-det.cpp)
 
 add_executable(compprogcheatsheet ${SOURCE_FILES})

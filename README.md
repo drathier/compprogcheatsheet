@@ -12,6 +12,7 @@ Cheat sheet for competitive programming
 - segmenttree 2D (uva)
 - matrix exponentiation (non-published impa uva, tst)
 - trie (tst)
+- matrix determinant (tst)
 
 # Needs testing
 - fenwick tree
