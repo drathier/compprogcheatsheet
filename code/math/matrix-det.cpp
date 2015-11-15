@@ -15,7 +15,7 @@ T det(const Matrix& a) { // square matrix
 	}
 	T ret = 0;
 	for (int i = 0; i < a.size(); i++) {
-		Matrix tmp(a.size() - 1, vector<T>(a.size() - 1));
+		Matrix tmp(a.size() - 1, Row(a.size() - 1));
 		for (int p = 1; p < a.size(); p++) {
 			for (int k = 0; k < a.size(); k++) {
 				if (k == i) continue;
