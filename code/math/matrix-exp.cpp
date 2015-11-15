@@ -5,9 +5,11 @@
 
 using namespace std;
 
-typedef long long T;
+using T = long long;
+using Row = vector<T>;
+using Matrix = vector<Row>;
 
-void matmul(vector<vector<T>> &a, vector<vector<T>> &b, vector<vector<T>> &out, T mod = LLONG_MAX / 2) { // assuming (row,col) and a.size = b[0].size()
+void matmul(Matrix &a, Matrix &b, Matrix &out, T mod = LLONG_MAX / 2) { // assuming (row,col) and a.size = b[0].size()
 	for (int i = 0; i < a.size(); i++) {
 		for (int k = 0; k < b[0].size(); k++)
 			out[i][k] = 0; // reset
@@ -19,10 +21,10 @@ void matmul(vector<vector<T>> &a, vector<vector<T>> &b, vector<vector<T>> &out, 
 	}
 }
 
-void matpow(vector<vector<T>> &a, T n, vector<vector<T>> &out, T mod = LLONG_MAX / 2) { // out=(a^n)%mod assuming square matrix and out filled with zeroes.
+void matpow(Matrix &a, T n, Matrix &out, T mod = LLONG_MAX / 2) { // out=(a^n)%mod assuming square matrix and out filled with zeroes.
 	for (int i = 0; i < out.size(); i++)
 		out[i][i] = 1; // out = identity matrix
-	vector<vector<T>> tmp(a.size(), vector<T>(a[0].size()));
+	Matrix tmp(a.size(), Row(a[0].size()));
 	while (n > 0) {
 		if (n & 1) {
 			matmul(out, a, tmp, mod);
@@ -38,7 +40,7 @@ void matpow(vector<vector<T>> &a, T n, vector<vector<T>> &out, T mod = LLONG_MAX
 	}
 }
 
-void print(vector<vector<T>> &a) {
+void print(Matrix &a) {
 	for (int i = 0; i < a.size(); i++) {
 		for (int k = 0; k < a[i].size(); k++) {
 			cout << a[i][k] << " ";
@@ -63,23 +65,23 @@ void print(vector<vector<T>> &a) {
  * */
 
 int main() {
-	vector<vector<T>> a({{1, 2, 3},
+	Matrix a({{1, 2, 3},
 						 {4, 5, 6}});
-	vector<vector<T>> b({{7,  8},
+	Matrix b({{7,  8},
 						 {9,  10},
 						 {11, 12}});
-	vector<vector<T>> ab({{58,  64},
+	Matrix ab({{58,  64},
 						  {139, 154}});
-	vector<vector<T>> out(b[0].size(), vector<T>(a.size()));
+	Matrix out(b[0].size(), Row(a.size()));
 	matmul(a, b, out);
 	assert(out == ab);
 	matmul(a, b, out);
 	assert(out == ab);
 
 	// matpow test: fibonacci
-	vector<vector<T>> fib({{1, 1},
+	Matrix fib({{1, 1},
 						   {1, 0}});
-	vector<vector<T>> res({{0, 0},
+	Matrix res({{0, 0},
 						   {0, 0}});
 	T n = 13;
 	matpow(fib, n - 2, res);
