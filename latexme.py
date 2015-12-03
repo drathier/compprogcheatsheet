@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 import sys
 import os
 from collections import namedtuple, defaultdict
@@ -55,35 +56,46 @@ def recursive_collect(collection, directory):
 
             filetype = first_match(FileTypes, fname)
             section = first_match(Sections, directory)
-            append(collection, Entry(
-                latexify(fname), content, latexify(filetype), 
-                latexify(section), path))
+            if filetype and section:
+                append(collection, Entry(
+                    latexify(fname), content, latexify(filetype), 
+                    latexify(section), path))
 
 
 header = r"""\title{A Competitive Programming Cheat Sheet}
 
-\documentclass[landscape]{article}
+\documentclass[11pt,twocolumn,landscape]{article}
 
 \usepackage{listings}
-\usepackage[landscape]{geometry}
+\usepackage[landscape,margin=0.5in]{geometry}
 \usepackage[usenames,dvipsnames]{color}
+\usepackage[utf8]{inputenc}
+\author{23.15\% Mer Kräm}
 
-\definecolor{DarkGreen}{rgb}{0.0,0.4,0.0} % Comment color
+\definecolor{comment-color}{rgb}{0.0,0.3,0.0} % Comment color
 \definecolor{highlight}{RGB}{255,251,204} % Code highlight color
 \definecolor{light-gray}{gray}{0.85}
+\definecolor{background-color}{gray}{0.95}
+\definecolor{string-color}{rgb}{0.05,0.6,0.0}
+\definecolor{keyword-color}{RGB}{255,41,41}
+
 \lstset{
 language=C++,
 basicstyle=\footnotesize,
-backgroundcolor=\color{light-gray}
+backgroundcolor=\color{background-color},
+commentstyle=\color{comment-color},
+stringstyle=\color{string-color},
+keywordstyle=\color{keyword-color},
 }
 \begin{document}
 \maketitle
+\clearpage
 
 """
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        print("'python3 latexme.py filename' needs to be run")
+        print("'python3 latexme.py output_filename' needs to be run")
         exit(1)
     entries = []
     recursive_collect(entries, CODE_DIR)
@@ -92,7 +104,7 @@ if __name__ == '__main__':
     sections = ""
     for entry in entries:
         if entry.section != last_section:
-            sections += r"\clearpage" + "\n"
+            #sections += r"\clearpage" + "\n"
             sections += r"\section{" + entry.section + "}\n\n"
         if is_code(entry):
             sections += r'\subsection{' + entry.filename + '}\n'
