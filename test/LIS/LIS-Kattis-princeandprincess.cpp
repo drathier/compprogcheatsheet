@@ -1,26 +1,21 @@
-#include <iostream>
-#include <vector>
-#include <tuple>
-#include <map>
-
+#include <bits/stdc++.h>
 using namespace std;
 using vi=vector<int>;
 
-// Find the length maximal j such that seq[best[j]] < target
-int binary_search(const vi& seq, const vi& best, 
+int binary_search(const vi& seq, const vi& best,
                   int low, int high, int target) {
+  auto holds = [&](int a) {
+    return seq[best[a]] < target;
+  };
 
-  for (int middle = (low+high)/2; true; middle=(low+high)/2) {
-    if (high - low <= 1) {
-      if (seq[best[high]] < target) return high;
-      else if (seq[best[low]] < target) return low;
-      else return 0; // Nothing is smaller than this (to the left)
-    }
+  for (int middle = (low+high)/2; high - low > 1; middle=(low+high)/2)
+    holds(middle) ? low = middle : high = middle - 1;
 
-    if (seq[best[middle]] < target) low = middle;
-    else  high = middle - 1;
-  }
+  if (holds(high)) return high;
+  else if (holds(low)) return low;
+  else return 0; // Nothing is smaller than this (to the left)
 }
+
 
 // Returns the parent vector and the index to the last element in the
 // longest sequence.
@@ -69,17 +64,19 @@ int solve(int n, int p, int q) {
 
   vi prince(p+1);
   vi princess(q+1);
-  for (int i = 0; i <= p; ++i) cin >> prince[i];
-  for (int i = 0; i <= q; ++i) cin >> princess[i];
+  for_each(prince.begin(), prince.end(), [](int& i){cin >> i;});
+  for_each(princess.begin(), princess.end(), [](int& i){cin >> i;});
   vi actual_princess;
   map<int, int> renamed;
   int cnt = 0;
-  for (int i : prince) renamed[i] = ++cnt;
-  for (int i : princess) {
-    if (renamed.find(i) != renamed.end())
-      actual_princess.push_back(renamed[i]);
-  }
-  tuple<vi, int> solution = longest_increasing_subsequence(actual_princess);
+  for_each(prince.begin(), prince.end(), [&](int i){
+      renamed[i] = ++cnt;
+    });
+  for_each(princess.begin(), princess.end(), [&](int i){
+      if (renamed.find(i) != renamed.end())
+        actual_princess.push_back(renamed[i]);
+    });
+  auto solution = longest_increasing_subsequence(actual_princess);
   return find_len(get<0>(solution), get<1>(solution));
 }
 

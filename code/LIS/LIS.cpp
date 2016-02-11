@@ -8,17 +8,16 @@ using vi=vector<int>;
 // Find the length maximal j such that seq[best[j]] < target
 int binary_search(const vi& seq, const vi& best,
                   int low, int high, int target) {
+  auto holds = [&](int a) {
+    return seq[best[a]] < target;
+  };
 
-  for (int middle = (low+high)/2; true; middle=(low+high)/2) {
-    if (high - low <= 1) {
-      if (seq[best[high]] < target) return high;
-      else if (seq[best[low]] < target) return low;
-      else return 0; // Nothing is smaller than this (to the left)
-    }
+  for (int middle = (low+high)/2; high - low > 1; middle=(low+high)/2)
+    holds(middle) ? low = middle : high = middle - 1;
 
-    if (seq[best[middle]] < target) low = middle;
-    else  high = middle - 1;
-  }
+  if (holds(high)) return high;
+  else if (holds(low)) return low;
+  else return 0; // Nothing is smaller than this (to the left)
 }
 
 // Returns the parent vector and the index to the last element in the
