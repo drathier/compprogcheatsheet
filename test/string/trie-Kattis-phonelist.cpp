@@ -55,3 +55,29 @@ struct Trie {
     }
 
 };
+
+
+void solve(const vector<string>& numbers) {
+    Trie trie;
+    for (const string& s : numbers) {
+        if (trie.prefix(s)) {
+            cout << "NO" << endl;
+            return;
+        }
+        trie.add_string(s);
+    }
+    cout << "YES" << endl;
+}
+
+
+int main() {
+    ios::sync_with_stdio(false);
+    int t, n;
+    cin >> t;
+    while (t--) {
+        cin >> n;
+        vector<string> numbers(n);
+        for (string& s : numbers) cin >> s;
+        solve(numbers);
+    }
+}
